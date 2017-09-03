@@ -77,11 +77,13 @@ class GcmChannel
                 'title' => $message->title,
                 'message' => $message->message,
             ] + $message->data);
-        $packet->setNotification([
-                'title' => $message->title,
-                'body' => $message->message,
-                'sound' => $message->sound,
-            ] + $message->data);
+        if($message->hasNotification()) {
+            $packet->setNotification([
+                    'title' => $message->title,
+                    'body' => $message->message,
+                    'sound' => $message->sound,
+                ] + $message->data);
+        }
 
         return $packet;
     }

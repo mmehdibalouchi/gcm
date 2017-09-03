@@ -52,6 +52,8 @@ class GcmMessage
      */
     public $data = [];
 
+    public $hasNotif = false;
+
     /**
      * @param string|null $title
      * @param string|null $message
@@ -193,5 +195,16 @@ class GcmMessage
             'action' => $action,
             'params' => $params,
         ]);
+    }
+
+    public function setHasNotification($has = false)
+    {
+        $this->hasNotif = $has;
+        return $this;
+    }
+
+    public function hasNotification()
+    {
+        return $this->hasNotif;
     }
 }
